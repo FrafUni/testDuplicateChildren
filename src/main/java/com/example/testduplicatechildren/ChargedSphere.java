@@ -1,26 +1,26 @@
 package com.example.testduplicatechildren;
 
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
+import javafx.scene.shape.Sphere;
 
 import java.util.Objects;
 
-public class ChargedSphere extends javafx.scene.shape.Sphere {
+public class ChargedSphere extends Sphere {
     double charge;
 
     public ChargedSphere(double charge) {
         this.charge = charge;
     }
 
-    public double getCharge() {
-        return charge;
-    }
-
-    public void setCharge(double charge) {
+    public ChargedSphere(double v, double charge) {
+        super(v);
         this.charge = charge;
     }
 
-    public void update(){
-        this.setCenter(this.getLayoutX() + 0.5, this.getLayoutY() + 0.5);
+    public void setCenter(double x, double y){
+        setTranslateX(x);
+        setTranslateX(y);
     }
 
     @Override
@@ -34,17 +34,5 @@ public class ChargedSphere extends javafx.scene.shape.Sphere {
     @Override
     public int hashCode() {
         return Objects.hash(charge);
-    }
-
-    public void setCenter(double x, double y){
-        this.setTranslateX(x);
-        this.setTranslateY(y);
-    }
-
-    @Override
-    public String toString() {
-        return "ChargedSphere{" +
-                "charge=" + charge +
-                '}';
     }
 }

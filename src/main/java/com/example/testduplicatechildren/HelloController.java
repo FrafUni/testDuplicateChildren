@@ -6,34 +6,49 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Sphere;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HelloController {
     @FXML private AnchorPane root;
-    private int i = 0;
     @FXML private Button deleteButton;
 
     private ArrayList<ChargedSphere> circleArrayList = new ArrayList<>();
 
     @FXML public void onClick(MouseEvent e) {
-        ChargedSphere circle = new ChargedSphere(5 + i);
-        i++;
-      //  circle.setFill(Color.BLUE);
-        circle.setRadius(10);
+        /*
+        ChargedSphere circle = new ChargedSphere(10, 10);
 
-        circle.setTranslateX(e.getX());
-        circle.setTranslateY(e.getY());
-
+        circle.setCenter(e.getX(), e.getY());
         root.getChildren().add(circle);
-        circleArrayList.add(circle);
+        circle.setVisible(true);
+
+        circleArrayList.add(circle);*/
+
+        Test t = new Test(new Sphere(10));
+        root.getChildren().add(t);
+
+        System.out.println(e);
+        t.setTranslateX(e.getX());
+        t.setTranslateY(e.getY());
+
+
+        /*
+        t.sphere.setTranslateX(e.getX());
+        t.sphere.setTranslateY(e.getY());
+        root.getChildren().add(t.sphere);
+        */
+
+        t.setVisible(true);
     }
 
     @FXML void onDelete(MouseEvent event) {
-        root.getChildren().removeIf(node -> node instanceof Sphere);
+        root.getChildren().removeIf(node -> node instanceof Region);
         circleArrayList.clear();
     }
 }
